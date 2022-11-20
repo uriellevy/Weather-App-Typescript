@@ -26,12 +26,17 @@ const CurrentCityView = ({ isCelcius, setTrue, setFalse }: CurrentCityViewProps)
             {Temperature ?
                 <>
                     <div className={classes.currentCityTitle}>
-                        <Typography variant="h6" component="h6">
+                        <Typography
+                            variant="h6"
+                            component="h6"
+                            sx={{ marginRight: "5px" }}>
                             {`${currentCityDescription && currentCityDescription.EnglishName || "Tel Aviv"},`}
                         </Typography>
-                        {/* <Typography variant="h6" component="h6">
-                    {stateName}
-                </Typography> */}
+                        <Typography
+                            variant="h6"
+                            component="h6">
+                            {currentCityDescription.Country.LocalizedName}
+                        </Typography>
                     </div>
                     <Clock />
                     <div className={classes.toggleTempWrapper}>

@@ -1,5 +1,5 @@
 import { TextField, Typography } from '@mui/material';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { WeatherContext } from '../store/context';
 import { debounce } from '../utils/debounce';
 import { localStorageServices } from '../services/localStorage';
@@ -9,14 +9,19 @@ import {appDictionary} from "../constants/appConsts";
 import UseBoolean from '../utils/UseBoolean';
 
 const HomeView = () => {
-    const { cityInput, setCityInput, currentCityData, currentCityDescription } = useContext(WeatherContext);
+    const {cityInput, setCityInput, currentCityData, currentCityDescription } = useContext(WeatherContext);
     const [isCelcius, {setFalse, setTrue}] = UseBoolean(true);
     const {HOME_VIEW_TITLE} = appDictionary;
-    console.log(currentCityData, currentCityDescription)
+    console.log(cityInput)
+
+    // useEffect(() => {
+        
+
+    // },[cityInput])
 
     const changeCityInputHandler = debounce((e: React.ChangeEvent<HTMLInputElement>) => {
         setCityInput(e.target.value);
-        localStorageServices.saveCityInput(e.target.value);
+        // localStorageServices.saveCityInput(e.target.value);
     }, 1500)
 
     return (
@@ -29,6 +34,7 @@ const HomeView = () => {
                 label="Enter city name..."
                 variant="outlined"
                 sx={{ width: "300px", marginBottom: "30px" }}
+                key={cityInput}
                 // value={cityInput}
                 onChange={changeCityInputHandler}
             /*error={true} helperText="No digits allowed"*/ />

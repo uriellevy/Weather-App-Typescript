@@ -5,6 +5,7 @@ import { localStorageServices } from '../services/localStorage';
 
 
 export const WeatherContext = createContext<any>(null);
+//todo move to redux
 
 export const WeatherProvider = (props: any) => {
     const [cityInput, setCityInput] = useState(localStorageServices.getCityInput || "tel aviv");
@@ -30,7 +31,7 @@ export const WeatherProvider = (props: any) => {
             setCurrentCityDescription(data)
             return getCurrentWeather(data.Key);
         })
-    }, [])
+    }, [cityInput])
 
     
 
