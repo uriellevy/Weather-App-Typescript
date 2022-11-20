@@ -1,10 +1,14 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { API_KEY, BASE_URL } from '../constants/apiConsts';
+import { localStorageServices } from '../services/localStorage';
+
+
 
 export const WeatherContext = createContext<any>(null);
 
 export const WeatherProvider = (props: any) => {
-    const [cityInput, setCityInput] = useState("tel aviv");
+    const [cityInput, setCityInput] = useState(localStorageServices.getCityInput || "tel aviv");
+    const [currentCityDescription, setCurrentCityDescription] = useState([])
     const [currentCityData, setCurrentCityData] = useState({});
 
     const getCityNumber = async (cityName: string) => {
@@ -14,17 +18,23 @@ export const WeatherProvider = (props: any) => {
     };
 
     const getCurrentWeather = async (cityNumber:number) => {
-        const res = await fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${cityNumber}?apikey=${API_KEY}`);
+        const res = await fetch(`${BASE_URL}/forecasts/v1/daily/1day/${cityNumber}?apikey=${API_KEY}`);
         const data = await res.json();
         setCurrentCityData(data.DailyForecasts[0]);
     }
 
-    // useEffect(() => {
-    //     getCityNumber(cityInput).then((data) => {
-    //         return getCurrentWeather(data.Key);
-    //     })
-    //     // console.log(currentCityData)
-    // }, [currentCityData])
+    // getCityNumber(cityInput);
+
+    useEffect(() => {
+        getCityNumber(cityInput).then((data) => {
+            setCurrentCityDescription(data)
+            return getCurrentWeather(data.Key);
+        })
+    }, [])
+
+    
+
+
 
     
 
@@ -34,6 +44,8 @@ export const WeatherProvider = (props: any) => {
         setCityInput,
         currentCityData,
         setCurrentCityData,
+        currentCityDescription,
+        setCurrentCityDescription,
     };
 
     return (

@@ -9,8 +9,11 @@ const get = (collection:string) => {
     return saved ? JSON.parse(saved) : "";
 }
 
-const saveCityInput = (cityName:string) => save("cityName", cityName )
+const saveCityInput = (cityName:string) => save("cityName", cityName );
+
+const getCityInput = () => get("cityName");
 
 export const localStorageServices = {
     saveCityInput,
+    getCityInput,
 }
