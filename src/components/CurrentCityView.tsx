@@ -17,13 +17,14 @@ const CurrentCityView = ({ isCelcius, setTrue, setFalse }: CurrentCityViewProps)
     const { currentCityData, currentCityDescription } = useContext(WeatherContext)
     const { FAHRENHEIT_SIGN, CELCIUS_SIGN } = appDictionary;
     const { Temperature, Day, Night } = currentCityData;
+    const isFetchDataCompleted = Temperature && currentCityDescription;
 
-    // const stateName = currentCityDescription.Country.LocalizedName  || "Israel"
+    console.log(currentCityDescription)
 
     return (
 
         <div className={classes.currentCityContainer}>
-            {Temperature ?
+            {isFetchDataCompleted ?
                 <>
                     <div className={classes.currentCityTitle}>
                         <Typography

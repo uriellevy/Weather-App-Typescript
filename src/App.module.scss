@@ -24,14 +24,17 @@
         }
         .tempWrapper {
           display: flex;
-          flex-direction: column;
+          justify-content: space-between;
           .dayTempWrapper {
             display: flex;
-            justify-content: space-evenly;
+            flex-direction: column;
+            align-items: baseline;
+            justify-content: normal;
           }
           .nightTempWrapper {
             display: flex;
-
+            flex-direction: column;
+            justify-content: end;
           }
         }
       }
