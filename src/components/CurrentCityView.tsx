@@ -4,7 +4,7 @@ import { Clock } from '../utils/clock';
 import classes from '../App.module.scss';
 import { WeatherContext } from '../store/context';
 import { appDictionary } from "../constants/appConsts";
-import { fahrenheitToCelciusConverter } from "../utils/celciusConvertor";
+import { fahrenheitToCelciusConverter } from "../utils/utilsFunctions";
 
 interface CurrentCityViewProps {
     isCelcius: boolean

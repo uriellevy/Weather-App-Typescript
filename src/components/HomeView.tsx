@@ -15,12 +15,15 @@ const HomeView = () => {
     const [isTextValid, setIsTextValid] = useState(false);
     const { HOME_VIEW_TITLE } = appDictionary;
 
-
+    const textValidation = (inputText:string) => {
+        const lettersPattern = /^[a-zA-Z]*$/g;
+        return lettersPattern.test(inputText) === true ? setIsTextValid(true) : setIsTextValid(false)
+    }
 
     const changeCityInputHandler = debounce((e: React.ChangeEvent<HTMLInputElement>) => {
         setCityInput(e.target.value);
+        textValidation(e.target.value);
         localStorageServices.saveCityInput(e.target.value);
-        /\D/.test(e.target.value) === true ? setIsTextValid(true) : setIsTextValid(false);//Input Number Validation
         console.log(isTextValid)
     }, 1500)
 
@@ -40,7 +43,7 @@ const HomeView = () => {
                 key={cityInput}
                 // value={cityInput}
                 onChange={changeCityInputHandler}
-                error={!isTextValid} helperText="No digits allowed" />
+                error={!isTextValid} helperText="Only English Letters allowed" />
             <CurrentCityView isCelcius={isCelcius} setTrue={setTrue} setFalse={setFalse} />
             <FiveDaysForcast/>
 

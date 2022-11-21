@@ -56,6 +56,8 @@ export const WeatherProvider = (props: any) => {
         setCurrentCityData,
         currentCityDescription,
         setCurrentCityDescription,
+        fiveDaysForcastData,
+        setFiveDaysForcastData
     };
 
     return (
