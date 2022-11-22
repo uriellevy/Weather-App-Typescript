@@ -2,9 +2,9 @@ import { Typography, Button, Divider } from '@mui/material';
 import React, { useContext } from 'react';
 import { Clock } from '../utils/clock';
 import classes from '../App.module.scss';
-import { WeatherContext } from '../store/context';
-import { appDictionary } from "../constants/appConsts";
-import { fahrenheitToCelciusConverter } from "../utils/utilsFunctions";
+import { WeatherContext } from '../context/context';
+import { appDictionary, weekDaysDictionary } from "../constants/appConsts";
+import { fahrenheitToCelciusConverter, stringToWeekDayNumber, stringToDateFormatter } from "../utils/utilsFunctions";
 
 interface CurrentCityViewProps {
     isCelcius: boolean
@@ -16,10 +16,11 @@ interface CurrentCityViewProps {
 const CurrentCityView = ({ isCelcius, setTrue, setFalse }: CurrentCityViewProps) => {
     const { currentCityData, currentCityDescription } = useContext(WeatherContext)
     const { FAHRENHEIT_SIGN, CELCIUS_SIGN } = appDictionary;
-    const { Temperature, Day, Night } = currentCityData;
+    const { Temperature, Day, Night, Date } = currentCityData;
     const isFetchDataCompleted = Temperature && currentCityDescription;
+    const weekDay = weekDaysDictionary[stringToWeekDayNumber(currentCityData.Date)]
+    const date = stringToDateFormatter(currentCityData.Date);
 
-    console.log(currentCityDescription)
 
     return (
 
@@ -28,15 +29,28 @@ const CurrentCityView = ({ isCelcius, setTrue, setFalse }: CurrentCityViewProps)
                 <>
                     <div className={classes.currentCityTitle}>
                         <Typography
-                            variant="h6"
-                            component="h6"
+                            variant="h5"
+                            component="h5"
                             sx={{ marginRight: "5px" }}>
                             {`${currentCityDescription && currentCityDescription.EnglishName || "Tel Aviv"},`}
                         </Typography>
                         <Typography
+                            variant="h5"
+                            component="h5">
+                            {currentCityDescription.Country.LocalizedName}
+                        </Typography>
+                    </div>
+                    <div className={classes.currentCitySubtitle}>
+
+                        <Typography
                             variant="h6"
                             component="h6">
-                            {currentCityDescription.Country.LocalizedName}
+                            {`${weekDay},`}
+                        </Typography>
+                        <Typography
+                            variant="h6"
+                            component="h6">
+                            {date}
                         </Typography>
                     </div>
                     <Clock />

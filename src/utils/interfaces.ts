@@ -19,4 +19,5 @@ export interface CurrentCityData {
     Day: Day
     Night: Night
     Temperature: Temperature
+    Date: string
 }

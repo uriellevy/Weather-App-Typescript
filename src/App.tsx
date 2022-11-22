@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './App.module.scss';
 import HomeView from './components/HomeView';
-import { WeatherProvider } from './store/context';
+import { WeatherProvider } from './context/context';
 
 function App() {
   return (

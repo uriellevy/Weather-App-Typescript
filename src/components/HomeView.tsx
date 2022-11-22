@@ -1,12 +1,12 @@
 import { TextField, Typography } from '@mui/material';
 import React, { useContext, useState } from 'react';
-import { WeatherContext } from '../store/context';
+import { WeatherContext } from '../context/context';
 import { debounce } from '../utils/debounce';
 import { localStorageServices } from '../services/localStorage';
 import CurrentCityView from './CurrentCityView';
 import classes from '../App.module.scss';
 import { appDictionary } from "../constants/appConsts";
-import UseBoolean from '../utils/UseBoolean';
+import UseBoolean from '../utils/customHooks/UseBoolean';
 import FiveDaysForcast from './FiveDaysForcast';
 
 const HomeView = () => {
@@ -15,7 +15,7 @@ const HomeView = () => {
     const [isTextValid, setIsTextValid] = useState(false);
     const { HOME_VIEW_TITLE } = appDictionary;
 
-    const textValidation = (inputText:string) => {
+    const textValidation = (inputText: string) => {
         const lettersPattern = /^[a-zA-Z]*$/g;
         return lettersPattern.test(inputText) === true ? setIsTextValid(true) : setIsTextValid(false)
     }
@@ -39,13 +39,14 @@ const HomeView = () => {
                 id="outlined-basic"
                 label="Enter city name..."
                 variant="outlined"
-                sx={{ width: "300px", marginBottom: "30px" }}
+                sx={{ width: "300px", marginBottom: "30px", fontWeight: "900" }}
                 key={cityInput}
                 // value={cityInput}
                 onChange={changeCityInputHandler}
                 error={!isTextValid} helperText="Only English Letters allowed" />
+
             <CurrentCityView isCelcius={isCelcius} setTrue={setTrue} setFalse={setFalse} />
-            <FiveDaysForcast/>
+            <FiveDaysForcast isCelcius={isCelcius} />
 
         </div>
     )
