@@ -6,10 +6,9 @@ import { CurrentCityData } from '../utils/interfaces';
 
 
 export const WeatherContext = createContext<any>(null);
-//todo move to redux
 
 export const WeatherProvider = (props: any) => {
-    const [cityInput, setCityInput] = useState(localStorageServices.getCityInput || "tel aviv");
+    const [cityInput, setCityInput] = useState("tel aviv");
     const [currentCityDescription, setCurrentCityDescription] = useState([])
     const [currentCityData, setCurrentCityData] = useState({});
     const [fiveDaysForcastData, setFiveDaysForcastData] = useState<CurrentCityData[]>([])
@@ -31,7 +30,6 @@ export const WeatherProvider = (props: any) => {
         const data = await res.json();
 
         setFiveDaysForcastData(data.DailyForecasts);
-        console.log(fiveDaysForcastData);
     };
 
     useEffect(() => {

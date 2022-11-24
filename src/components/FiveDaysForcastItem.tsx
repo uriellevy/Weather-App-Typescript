@@ -16,7 +16,7 @@ const FiveDaysForcastItem = ({item, isCelcius}: FiveDaysForcastItemProps) => {
     const weekDay = weekDaysDictionary[stringToWeekDayNumber(item.Date)].slice(0,3);
     const dayTemp = `${fahrenheitToCelciusConverter(isCelcius, item.Temperature.Maximum.Value)}${GLOBAL_TEMP_SIGN}`;
     const NightTemp = `${fahrenheitToCelciusConverter(isCelcius, item.Temperature.Minimum.Value)}${GLOBAL_TEMP_SIGN}`;
-
+    
     return (
         <div className={classes.itemWrapper} >
             <Typography

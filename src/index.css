@@ -4,8 +4,8 @@
   --light-green: #59ce72;
   --pale-green: #e0f6ca; /* OUTGOING CHAT BUBBLE */
   --blue: #4fb6ec; /* CHECKMARK BLUE  */
-  --bg: #ebe5de;
-  --selected-gray: #f0f2f5;
+  --selected-hot: linear-gradient(to bottom, #ffe677e5, #fd5f51e8);
+  --selected-cold: linear-gradient(to bottom, #20bed0e5, #007fb6e7);
 }
 body {
   margin: 0;

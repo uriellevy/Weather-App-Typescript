@@ -18,9 +18,10 @@ const CurrentCityView = ({ isCelcius, setTrue, setFalse }: CurrentCityViewProps)
     const { FAHRENHEIT_SIGN, CELCIUS_SIGN } = appDictionary;
     const { Temperature, Day, Night, Date } = currentCityData;
     const isFetchDataCompleted = Temperature && currentCityDescription;
-    const weekDay = weekDaysDictionary[stringToWeekDayNumber(currentCityData.Date)]
-    const date = stringToDateFormatter(currentCityData.Date);
-
+    const weekDay = weekDaysDictionary[stringToWeekDayNumber(Date)]
+    const date = stringToDateFormatter(Date);
+    // const isHotOrCold = (Day.Temperature.Maximum.Value + Night.Temperature.Maximum.Value) / 2 > 25 ? "hot" : "cold";
+    console.log(currentCityData)
 
     return (
 

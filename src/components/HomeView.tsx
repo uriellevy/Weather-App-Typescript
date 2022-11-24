@@ -36,14 +36,14 @@ const HomeView = () => {
                 {HOME_VIEW_TITLE}
             </Typography>
             <TextField
-                id="outlined-basic"
+                id="filled-basic"
                 label="Enter city name..."
-                variant="outlined"
-                sx={{ width: "300px", marginBottom: "30px", fontWeight: "900" }}
+                variant="filled"
+                sx={{ width: "300px", marginBottom: "30px", fontWeight: "bold" }}
                 key={cityInput}
                 // value={cityInput}
                 onChange={changeCityInputHandler}
-                error={!isTextValid} helperText="Only English Letters allowed" />
+               /* error={!isTextValid} helperText="Only English Letters allowed"*/ />
 
             <CurrentCityView isCelcius={isCelcius} setTrue={setTrue} setFalse={setFalse} />
             <FiveDaysForcast isCelcius={isCelcius} />
