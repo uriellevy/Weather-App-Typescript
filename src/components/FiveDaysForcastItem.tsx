@@ -1,9 +1,10 @@
 import { Typography } from '@mui/material';
-import { CurrentCityData } from '../utils/interfaces';
+import { CurrentCityData } from '../interfaces/HomeViewInterfaces';
 import classes from '../App.module.scss';
 import { weekDaysDictionary } from "../constants/appConsts";
 import { appDictionary } from "../constants/appConsts";
 import {fahrenheitToCelciusConverter, stringToWeekDayNumber} from "../utils/utilsFunctions"
+
 
 
 interface FiveDaysForcastItemProps {
@@ -18,7 +19,7 @@ const FiveDaysForcastItem = ({item, isCelcius}: FiveDaysForcastItemProps) => {
     const NightTemp = `${fahrenheitToCelciusConverter(isCelcius, item.Temperature.Minimum.Value)}${GLOBAL_TEMP_SIGN}`;
     
     return (
-        <div className={classes.itemWrapper} >
+        <div className={classes.itemWrapper}>
             <Typography
                 variant="h6"
                 component="h6">

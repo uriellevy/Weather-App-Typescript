@@ -7,10 +7,17 @@
       justify-content: center;
       align-items: center;
       .currentCityContainer {
-        background:  var(--selected-hot);
+        // background:  var(--selected-hot);
         border-radius: 5px;
         padding: 10px 20px;
         width: 230px;
+        // .hot {
+        //   background: var(--selected-cold) !important;
+        // }
+        // .cold {
+        //   background: var(--selected-hot) !important;
+  
+        // }
         .toggleTempWrapper {
           display: flex;
           align-items: center;
@@ -68,6 +75,14 @@
         }
 
       }
+      
+       .hot {
+        background: var(--selected-hot) !important;
+      }
+       .cold {
+        background: var(--selected-cold) !important;
+
+      }
     }
   }
   
@@ -105,5 +120,13 @@
     to {
       transform: rotate(360deg);
     }
+  }
+
+  .hot {
+    background: linear-gradient(to bottom, #ffe677e5, #fd5f51e8) !important;
+  }
+   .cold {
+    background: linear-gradient(to bottom, #ffe677e5, #fd5f51e8) !important;
+
   }
   

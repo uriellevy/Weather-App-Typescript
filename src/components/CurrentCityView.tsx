@@ -5,6 +5,9 @@ import classes from '../App.module.scss';
 import { WeatherContext } from '../context/context';
 import { appDictionary, weekDaysDictionary } from "../constants/appConsts";
 import { fahrenheitToCelciusConverter, stringToWeekDayNumber, stringToDateFormatter } from "../utils/utilsFunctions";
+import {isHotOrCold} from "../utils/utilsFunctions";
+import {dummy_data, basicDummyData} from "../constants/apiConsts";
+
 
 interface CurrentCityViewProps {
     isCelcius: boolean
@@ -14,18 +17,21 @@ interface CurrentCityViewProps {
 
 
 const CurrentCityView = ({ isCelcius, setTrue, setFalse }: CurrentCityViewProps) => {
-    const { currentCityData, currentCityDescription } = useContext(WeatherContext)
+    // const { currentCityData, currentCityDescription } = useContext(WeatherContext)
+    const currentCityData: any = dummy_data.DailyForecasts[0];
+    const currentCityDescription: any = basicDummyData;
     const { FAHRENHEIT_SIGN, CELCIUS_SIGN } = appDictionary;
     const { Temperature, Day, Night, Date } = currentCityData;
     const isFetchDataCompleted = Temperature && currentCityDescription;
     const weekDay = weekDaysDictionary[stringToWeekDayNumber(Date)]
     const date = stringToDateFormatter(Date);
-    // const isHotOrCold = (Day.Temperature.Maximum.Value + Night.Temperature.Maximum.Value) / 2 > 25 ? "hot" : "cold";
-    console.log(currentCityData)
+    const isHotOrColdClass = isHotOrCold(fahrenheitToCelciusConverter(isCelcius, Temperature.Maximum.Value), fahrenheitToCelciusConverter(isCelcius, Temperature.Minimum.Value), isCelcius);
+    const currentCityContainerStyle = classes.currentCityContainer + " " + classes[isHotOrColdClass];
+    console.log(isHotOrColdClass)
 
     return (
 
-        <div className={classes.currentCityContainer}>
+        <div className={currentCityContainerStyle}>
             {isFetchDataCompleted ?
                 <>
                     <div className={classes.currentCityTitle}>
@@ -38,7 +44,8 @@ const CurrentCityView = ({ isCelcius, setTrue, setFalse }: CurrentCityViewProps)
                         <Typography
                             variant="h5"
                             component="h5">
-                            {currentCityDescription.Country.LocalizedName}
+                            {/* {currentCityDescription.Country.LocalizedName} */}
+                            Israel
                         </Typography>
                     </div>
                     <div className={classes.currentCitySubtitle}>

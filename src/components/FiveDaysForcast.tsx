@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 import classes from '../App.module.scss';
 import { WeatherContext } from '../context/context';
 import FiveDaysForcastItem from './FiveDaysForcastItem';
+import {fiveDaysDummyData} from "../constants/apiConsts"
 
 interface FiveDaysForcastProps {
     isCelcius: boolean
@@ -10,7 +11,8 @@ interface FiveDaysForcastProps {
 
 
 const FiveDaysForcast = ({isCelcius}:FiveDaysForcastProps ) => {
-    const { fiveDaysForcastData } = useContext(WeatherContext);
+    // const { fiveDaysForcastData } = useContext(WeatherContext);
+    const fiveDaysForcastData = fiveDaysDummyData.DailyForecasts;
     console.log(fiveDaysForcastData)
 
     return (

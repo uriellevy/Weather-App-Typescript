@@ -14,4 +14,10 @@ export const stringToDateFormatter = (dateString: string) => {
     return date;
 };
 
+export const isHotOrCold = (dayTemp:number, nightTemp:number, isCelcius: boolean) => {
+    const average = (dayTemp + nightTemp) / 2;
+    const boundaryTemp = isCelcius ? 25 : 77;
+    return average > boundaryTemp ? "hot" : "cold";
+}
+
 

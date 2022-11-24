@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { API_KEY, BASE_URL } from '../constants/apiConsts';
 import { localStorageServices } from '../services/localStorage';
-import { CurrentCityData } from '../utils/interfaces';
+import { CurrentCityData } from '../interfaces/HomeViewInterfaces';
 
 
 
@@ -32,18 +32,18 @@ export const WeatherProvider = (props: any) => {
         setFiveDaysForcastData(data.DailyForecasts);
     };
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        getCityNumber(cityInput).then((data) => {
-            setCurrentCityDescription(data);
-            return getCurrentWeather(data.Key);
-        })
+    //     getCityNumber(cityInput).then((data) => {
+    //         setCurrentCityDescription(data);
+    //         return getCurrentWeather(data.Key);
+    //     })
 
-        getCityNumber(cityInput).then((data) => {
-            return getFiveDaysForcast(data.Key);
-        })
+    //     getCityNumber(cityInput).then((data) => {
+    //         return getFiveDaysForcast(data.Key);
+    //     })
 
-    }, [cityInput]);
+    // }, [cityInput]);
 
   
 
