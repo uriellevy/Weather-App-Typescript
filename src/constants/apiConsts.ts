@@ -90,12 +90,12 @@ export const dummy_data = {
         "EpochDate": 1669096800,
         "Temperature": {
           "Minimum": {
-            "Value": 53,
+            "Value": 85,
             "Unit": "F",
             "UnitType": 18
           },
           "Maximum": {
-            "Value": 63,
+            "Value": 75,
             "Unit": "F",
             "UnitType": 18
           }
@@ -141,12 +141,12 @@ export const dummy_data = {
         "EpochDate": 1669269600,
         "Temperature": {
           "Minimum": {
-            "Value": 59,
+            "Value": 90,
             "Unit": "F",
             "UnitType": 18
           },
           "Maximum": {
-            "Value": 67,
+            "Value": 80,
             "Unit": "F",
             "UnitType": 18
           }

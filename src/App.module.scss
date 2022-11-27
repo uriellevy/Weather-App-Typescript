@@ -7,17 +7,10 @@
       justify-content: center;
       align-items: center;
       .currentCityContainer {
-        // background:  var(--selected-hot);
         border-radius: 5px;
         padding: 10px 20px;
         width: 230px;
-        // .hot {
-        //   background: var(--selected-cold) !important;
-        // }
-        // .cold {
-        //   background: var(--selected-hot) !important;
-  
-        // }
+     
         .toggleTempWrapper {
           display: flex;
           align-items: center;
@@ -61,7 +54,6 @@
         display: flex;
         margin-top: 100px;
         .itemWrapper {
-          background:  linear-gradient(to bottom, #20bfd0, #0080b6);
           padding: 10px 20px;
           border-radius: 5px;
           margin-right: 30px;
@@ -75,7 +67,7 @@
         }
 
       }
-      
+
        .hot {
         background: var(--selected-hot) !important;
       }

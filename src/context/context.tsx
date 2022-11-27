@@ -32,18 +32,18 @@ export const WeatherProvider = (props: any) => {
         setFiveDaysForcastData(data.DailyForecasts);
     };
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     getCityNumber(cityInput).then((data) => {
-    //         setCurrentCityDescription(data);
-    //         return getCurrentWeather(data.Key);
-    //     })
+        getCityNumber(cityInput).then((data) => {
+            setCurrentCityDescription(data);
+            return getCurrentWeather(data.Key);
+        })
 
-    //     getCityNumber(cityInput).then((data) => {
-    //         return getFiveDaysForcast(data.Key);
-    //     })
+        getCityNumber(cityInput).then((data) => {
+            return getFiveDaysForcast(data.Key);
+        })
 
-    // }, [cityInput]);
+    }, [cityInput]);
 
   
 

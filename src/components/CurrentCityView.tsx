@@ -6,7 +6,6 @@ import { WeatherContext } from '../context/context';
 import { appDictionary, weekDaysDictionary } from "../constants/appConsts";
 import { fahrenheitToCelciusConverter, stringToWeekDayNumber, stringToDateFormatter } from "../utils/utilsFunctions";
 import {isHotOrCold} from "../utils/utilsFunctions";
-import {dummy_data, basicDummyData} from "../constants/apiConsts";
 
 
 interface CurrentCityViewProps {
@@ -17,17 +16,16 @@ interface CurrentCityViewProps {
 
 
 const CurrentCityView = ({ isCelcius, setTrue, setFalse }: CurrentCityViewProps) => {
-    // const { currentCityData, currentCityDescription } = useContext(WeatherContext)
-    const currentCityData: any = dummy_data.DailyForecasts[0];
-    const currentCityDescription: any = basicDummyData;
+    const { currentCityData, currentCityDescription } = useContext(WeatherContext)
     const { FAHRENHEIT_SIGN, CELCIUS_SIGN } = appDictionary;
     const { Temperature, Day, Night, Date } = currentCityData;
     const isFetchDataCompleted = Temperature && currentCityDescription;
-    const weekDay = weekDaysDictionary[stringToWeekDayNumber(Date)]
+    const weekDay = weekDaysDictionary[stringToWeekDayNumber(Date)];
     const date = stringToDateFormatter(Date);
-    const isHotOrColdClass = isHotOrCold(fahrenheitToCelciusConverter(isCelcius, Temperature.Maximum.Value), fahrenheitToCelciusConverter(isCelcius, Temperature.Minimum.Value), isCelcius);
+    const dayTemp = isFetchDataCompleted && fahrenheitToCelciusConverter(isCelcius, currentCityData.Temperature.Maximum.Value);
+    const NightTemp = isFetchDataCompleted && fahrenheitToCelciusConverter(isCelcius, currentCityData.Temperature.Minimum.Value);
+    const isHotOrColdClass = isHotOrCold(dayTemp, NightTemp, isCelcius);
     const currentCityContainerStyle = classes.currentCityContainer + " " + classes[isHotOrColdClass];
-    console.log(isHotOrColdClass)
 
     return (
 
@@ -84,7 +82,7 @@ const CurrentCityView = ({ isCelcius, setTrue, setFalse }: CurrentCityViewProps)
                     <div className={classes.tempWrapper}>
                         <div className={classes.dayTempWrapper}>
                             <Typography variant="h6" component="h6">
-                                {`Day: ${fahrenheitToCelciusConverter(isCelcius, Temperature.Maximum.Value)}°`}
+                                {`Day: ${dayTemp}°`}
                             </Typography>
                             <Typography variant="h6" component="h6">
                                 {Day.IconPhrase}
@@ -93,7 +91,7 @@ const CurrentCityView = ({ isCelcius, setTrue, setFalse }: CurrentCityViewProps)
                         </div>
                         <div className={classes.nightTempWrapper}>
                             <Typography variant="h6" component="h6">
-                                {`Night: ${fahrenheitToCelciusConverter(isCelcius, Temperature.Minimum.Value)}°`}
+                                {`Night: ${NightTemp}°`}
                             </Typography>
                             <Typography variant="h6" component="h6">
                                 {Night.IconPhrase}

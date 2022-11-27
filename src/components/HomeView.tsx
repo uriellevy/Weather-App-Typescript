@@ -11,7 +11,7 @@ import FiveDaysForcast from './FiveDaysForcast';
 
 
 const HomeView = () => {
-    // const { cityInput, setCityInput } = useContext(WeatherContext);
+    const { cityInput, setCityInput } = useContext(WeatherContext);
     const [isCelcius, { setFalse, setTrue }] = UseBoolean(true);
     const [isTextValid, setIsTextValid] = useState(false);
     const { HOME_VIEW_TITLE } = appDictionary;
@@ -21,29 +21,28 @@ const HomeView = () => {
         return lettersPattern.test(inputText) === true ? setIsTextValid(true) : setIsTextValid(false)
     }
 
-    // const changeCityInputHandler = debounce((e: React.ChangeEvent<HTMLInputElement>) => {
-    //     setCityInput(e.target.value);
-    //     textValidation(e.target.value);
-    //     localStorageServices.saveCityInput(e.target.value);
-    //     console.log(isTextValid)
-    // }, 1500)
+    const changeCityInputHandler = debounce((e: React.ChangeEvent<HTMLInputElement>) => {
+        setCityInput(e.target.value);
+        textValidation(e.target.value);
+        localStorageServices.saveCityInput(e.target.value);
+    }, 1500)
 
     return (
         <div className={classes.homeViewWrapper}>
-            <Typography
+            {/* <Typography
                 variant="h2"
                 component="h2"
                 sx={{ margin: "40px 0" }}>
                 {HOME_VIEW_TITLE}
-            </Typography>
+            </Typography> */}
             <TextField
                 id="filled-basic"
                 label="Enter city name..."
                 variant="filled"
                 sx={{ width: "300px", marginBottom: "30px", fontWeight: "bold" }}
-                // key={cityInput}
+                key={cityInput}
                 // value={cityInput}
-                // onChange={changeCityInputHandler}
+                onChange={changeCityInputHandler}
                /* error={!isTextValid} helperText="Only English Letters allowed"*/ />
 
             <CurrentCityView isCelcius={isCelcius} setTrue={setTrue} setFalse={setFalse} />

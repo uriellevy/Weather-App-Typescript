@@ -11,8 +11,8 @@ interface FiveDaysForcastProps {
 
 
 const FiveDaysForcast = ({isCelcius}:FiveDaysForcastProps ) => {
-    // const { fiveDaysForcastData } = useContext(WeatherContext);
-    const fiveDaysForcastData = fiveDaysDummyData.DailyForecasts;
+    const { fiveDaysForcastData } = useContext(WeatherContext);
+    // const fiveDaysForcastData = fiveDaysDummyData.DailyForecasts;
     console.log(fiveDaysForcastData)
 
     return (
