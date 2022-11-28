@@ -4,8 +4,7 @@ import { Clock } from '../utils/clock';
 import classes from '../App.module.scss';
 import { WeatherContext } from '../context/context';
 import { appDictionary, weekDaysDictionary } from "../constants/appConsts";
-import { fahrenheitToCelciusConverter, stringToWeekDayNumber, stringToDateFormatter } from "../utils/utilsFunctions";
-import {isHotOrCold} from "../utils/utilsFunctions";
+import { fahrenheitToCelciusConverter, stringToWeekDayNumber, stringToDateFormatter, isHotOrCold } from "../utils/utilsFunctions";
 
 
 interface CurrentCityViewProps {
@@ -27,6 +26,16 @@ const CurrentCityView = ({ isCelcius, setTrue, setFalse }: CurrentCityViewProps)
     const isHotOrColdClass = isHotOrCold(dayTemp, NightTemp, isCelcius);
     const currentCityContainerStyle = classes.currentCityContainer + " " + classes[isHotOrColdClass];
 
+    // const noDataTextToShow = ( text1: string, text2: string) => {
+    //     let textToShow = text1;
+    //     setTimeout(() => {
+    //         textToShow = text2;
+    //         return textToShow;
+    //     },2000)
+    //     return textToShow
+    // }
+
+
     return (
 
         <div className={currentCityContainerStyle}>
@@ -42,8 +51,7 @@ const CurrentCityView = ({ isCelcius, setTrue, setFalse }: CurrentCityViewProps)
                         <Typography
                             variant="h5"
                             component="h5">
-                            {/* {currentCityDescription.Country.LocalizedName} */}
-                            Israel
+                            {currentCityDescription.Country.LocalizedName}
                         </Typography>
                     </div>
                     <div className={classes.currentCitySubtitle}>
@@ -103,7 +111,8 @@ const CurrentCityView = ({ isCelcius, setTrue, setFalse }: CurrentCityViewProps)
                 </>
                 :
                 <div>
-                    Loading...
+                    {/* {noDataTextToShow("Loading...", "No City Data Found")} */}
+                    fdfdsf
                 </div>
             }
 

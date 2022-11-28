@@ -45,14 +45,6 @@ export const WeatherProvider = (props: any) => {
 
     }, [cityInput]);
 
-  
-
-    
-
-
-
-    
-
 
     const value = {
         cityInput,

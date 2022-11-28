@@ -9,7 +9,6 @@
       .currentCityContainer {
         border-radius: 5px;
         padding: 10px 20px;
-        width: 230px;
      
         .toggleTempWrapper {
           display: flex;
@@ -26,6 +25,7 @@
         }
         .currentCitySubtitle {
           display: flex;
+          justify-content: center;
           h6 {
             font-weight: 600;
           }
