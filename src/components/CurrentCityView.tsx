@@ -16,7 +16,7 @@ interface CurrentCityViewProps {
 
 const CurrentCityView = ({ isCelcius, setTrue, setFalse }: CurrentCityViewProps) => {
     const { currentCityData, currentCityDescription } = useContext(WeatherContext)
-    const { FAHRENHEIT_SIGN, CELCIUS_SIGN } = appDictionary;
+    const { FAHRENHEIT_SIGN, CELCIUS_SIGN, NO_DATA } = appDictionary;
     const { Temperature, Day, Night, Date } = currentCityData;
     const isFetchDataCompleted = Temperature && currentCityDescription;
     const weekDay = weekDaysDictionary[stringToWeekDayNumber(Date)];
@@ -26,14 +26,7 @@ const CurrentCityView = ({ isCelcius, setTrue, setFalse }: CurrentCityViewProps)
     const isHotOrColdClass = isHotOrCold(dayTemp, NightTemp, isCelcius);
     const currentCityContainerStyle = classes.currentCityContainer + " " + classes[isHotOrColdClass];
 
-    // const noDataTextToShow = ( text1: string, text2: string) => {
-    //     let textToShow = text1;
-    //     setTimeout(() => {
-    //         textToShow = text2;
-    //         return textToShow;
-    //     },2000)
-    //     return textToShow
-    // }
+   
 
 
     return (
@@ -67,7 +60,9 @@ const CurrentCityView = ({ isCelcius, setTrue, setFalse }: CurrentCityViewProps)
                             {date}
                         </Typography>
                     </div>
+
                     <Clock />
+                    
                     <div className={classes.toggleTempWrapper}>
                         <Button
                             variant="text"
@@ -103,7 +98,6 @@ const CurrentCityView = ({ isCelcius, setTrue, setFalse }: CurrentCityViewProps)
                             </Typography>
                             <Typography variant="h6" component="h6">
                                 {Night.IconPhrase}
-
                             </Typography>
                         </div>
 
@@ -111,8 +105,7 @@ const CurrentCityView = ({ isCelcius, setTrue, setFalse }: CurrentCityViewProps)
                 </>
                 :
                 <div>
-                    {/* {noDataTextToShow("Loading...", "No City Data Found")} */}
-                    fdfdsf
+                    {appDictionary.NO_DATA}
                 </div>
             }
 
