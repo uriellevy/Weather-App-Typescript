@@ -4,8 +4,8 @@
   --light-green: #59ce72;
   --pale-green: #e0f6ca; /* OUTGOING CHAT BUBBLE */
   --blue: #4fb6ec; /* CHECKMARK BLUE  */
-  --selected-hot: linear-gradient(to bottom, #ffe677d5, #fd5f51ce);
-  --selected-cold: linear-gradient(to bottom, #20bed0c2, #007fb6c4);
+  --selected-hot: linear-gradient(to bottom, #ffe677c2, #fd5f51bd);
+  --selected-cold: linear-gradient(to bottom, #20bed0b4, #007fb6a9);
 }
 body {
   margin: 0;
@@ -14,7 +14,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
+  min-height: 150vh;
   /* background-color: var(--selected-gray); */
   background: url("./assets/yuriy-kovalev-nN1HSDtKdlw-unsplash.jpg") no-repeat center center/cover;
 

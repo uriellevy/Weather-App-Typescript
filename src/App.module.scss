@@ -40,8 +40,8 @@
           .dayTempWrapper {
             display: flex;
             flex-direction: column;
-            align-items: baseline;
             justify-content: normal;
+            margin-right: 75px;
           }
           .nightTempWrapper {
             display: flex;
@@ -56,7 +56,7 @@
         .itemWrapper {
           padding: 10px 20px;
           border-radius: 5px;
-          margin-right: 30px;
+          margin: 10px;
           width: 70px;
           .tempWrraper {
             display: flex;
@@ -121,4 +121,16 @@
     background: linear-gradient(to bottom, #ffe677e5, #fd5f51e8) !important;
 
   }
-  
+
+
+  @media (max-width: 760px) {
+    .App {
+      .fiveDaysForcastContainer {
+        flex-wrap: wrap;
+        .itemWrapper {
+          flex: 1 0 30%;
+          margin: 40px !important;
+        }
+      }
+    }
+  }

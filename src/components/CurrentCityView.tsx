@@ -87,7 +87,7 @@ const CurrentCityView = ({ isCelcius, setTrue, setFalse }: CurrentCityViewProps)
                             <Typography variant="h6" component="h6">
                                 {`Day: ${dayTemp}°`}
                             </Typography>
-                            <Typography variant="h6" component="h6">
+                            <Typography paragraph={true} sx={{ fontSize: "16px", fontStyle: "italic" }}>
                                 {Day.IconPhrase}
                             </Typography>
 
@@ -96,7 +96,7 @@ const CurrentCityView = ({ isCelcius, setTrue, setFalse }: CurrentCityViewProps)
                             <Typography variant="h6" component="h6">
                                 {`Night: ${NightTemp}°`}
                             </Typography>
-                            <Typography variant="h6" component="h6">
+                            <Typography paragraph={true} sx={{ fontSize: "16px", fontStyle: "italic" }}>
                                 {Night.IconPhrase}
                             </Typography>
                         </div>
